@@ -1,27 +1,26 @@
 const defaultSize = 16;
+const gridMaxSize = 100;
 
 document.addEventListener('DOMContentLoaded',() => {
     // handle DOMContentLoaded event
     createGrid(defaultSize, defaultSize);
 
     const resetBtn = document.querySelector('#reset');
+
     resetBtn.addEventListener('click', () => {
-        let gridX = prompt('Enter size of x axis', defaultSize);
-        while (isNaN(gridX) || gridX > 512) {
-            alert('You did not enter a number or you tried a number larger than 512, try again');
-            gridX = prompt('Enter size of x axis', defaultSize);
-        }
-        let gridY = prompt('Enter size of y axis ', defaultSize);
-        while (isNaN(gridY) || gridY > 512) {
-            alert('You did not enter a number or you tried a number larger than 512, try again');
-            gridY = prompt('Enter size of y axis', defaultSize);
-        }
+
+        let gridSize = prompt('Enter size of grid', defaultSize);
+
+        while (isNaN(gridSize) || gridSize > gridMaxSize) {
+            alert('You did not enter a number or you tried a number larger than 100, try again');
+            gridSize = prompt('Enter size of grid', defaultSize);
+        } 
         
-        createGrid(gridX, gridY);
+        createGrid(gridSize);
     })
 });
 
-function createGrid(gridX, gridY) {
+function createGrid(gridSize) {
     // create rows
     // create columns
     const container = document.querySelector('#container');
@@ -33,10 +32,10 @@ function createGrid(gridX, gridY) {
 
     // generate cells
 
-    for (let i = 0; i < gridX; i++) {
-        for (let j = 0; j < gridY; j++) {
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
             const gridCell = document.createElement('div');
-            css( gridCell, { width: `calc(100%/${gridX})`, height: `calc(100%/${gridY})` });
+            css( gridCell, { width: `calc(100%/${gridSize})`, height: `calc(100%/${gridSize})` });
             gridCell.classList.add('cell', 'fill');
             gridCell.classList.toggle('fill'); // initially flip off the fill
             gridCell.addEventListener('mouseenter', () => { 
