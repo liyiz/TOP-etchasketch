@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
     resetBtn.addEventListener('click', () => {
 
-        let gridSize = prompt('Enter size of grid', defaultSize);
+        let gridSize = prompt('Enter size of grid (max. 100)', defaultSize);
 
-        while (isNaN(gridSize) || gridSize > gridMaxSize) {
-            alert('You did not enter a number or you tried a number larger than 100, try again');
+        while (isNaN(gridSize) || gridSize > gridMaxSize || gridSize <= 0) {
+            alert('You did not enter a number, zero or a number below zero, or you tried a number larger than 100, try again');
             gridSize = prompt('Enter size of grid', defaultSize);
         } 
         
