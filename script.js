@@ -1,6 +1,7 @@
 const defaultSize = 16;
 const gridMaxSize = 100;
 
+
 document.addEventListener('DOMContentLoaded',() => {
     // handle DOMContentLoaded event
     createGrid(defaultSize, defaultSize);
@@ -20,34 +21,38 @@ document.addEventListener('DOMContentLoaded',() => {
     })
 });
 
+
 function createGrid(gridSize) {
-    // create rows
-    // create columns
+
     const container = document.querySelector('#container');
     
-    // reset previous grid
+    // clears previous grid
     container.innerHTML = '';
-    // set grid size
-    // set cell size
-
-    // generate cells
 
     for (let i = 0; i < gridSize; i++) {
+
         for (let j = 0; j < gridSize; j++) {
+
             const gridCell = document.createElement('div');
             css( gridCell, { width: `calc(100%/${gridSize})`, height: `calc(100%/${gridSize})` });
+            
             gridCell.classList.add('cell', 'fill');
             gridCell.classList.toggle('fill'); // initially flip off the fill
+
             gridCell.addEventListener('mouseenter', () => { 
                 gridCell.classList.add('fill'); 
             });
+
             container.appendChild(gridCell);
+
         }
+
     }
 
 }
 
 
+// css helper function, to add inline css to js generated elements
 function css(e, styles) {
     for (const property in styles)
         e.style[property] = styles[property];
