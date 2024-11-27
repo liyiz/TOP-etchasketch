@@ -1,5 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    width: calc(50px*16); /* Make sure to change with JS sizes*/
+    
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
 .cell {
-    border: 1px solid red;
+    border: 1px solid black;
     height: 50px;
     width: 50px;
 }
