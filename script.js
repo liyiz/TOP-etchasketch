@@ -8,9 +8,9 @@ function createGrid() {
     // create columns
     const container = document.querySelector('#container');
 
-    
-    const gridCell = document.createElement('div');
 
+    const gridCell = document.createElement('div');
+    gridCell.classList.add('cell');
     container.appendChild(gridCell);
 
 }
